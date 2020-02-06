@@ -10,11 +10,3 @@ describe('App', () => {
     expect(tree).toMatchSnapshot();
   });
 });
-
-describe('Counter', () => {
-  test('snapshot renders', () => {
-    const component = renderer.create(<Counter counter={1} />);
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-});

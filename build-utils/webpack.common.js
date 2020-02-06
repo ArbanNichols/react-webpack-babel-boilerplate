@@ -21,7 +21,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Hello Webpack bundled JavaScript Project',
+      title: 'Code Challenge',
       template: './src/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
