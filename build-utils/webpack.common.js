@@ -13,6 +13,10 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+      {
+        test: /\.(css)$/,
+        use: ['style-loader', 'css-loader'],
+      }
     ],
   },
   resolve: {
@@ -28,6 +32,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       'React': 'react',
       'ReactDOM': 'react-dom',
+      'useState': ['react', 'useState'],
+      'useEffect': ['react', 'useEffect'],
     })
   ],
   output: {
