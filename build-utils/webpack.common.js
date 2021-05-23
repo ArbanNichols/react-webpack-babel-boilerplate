@@ -25,6 +25,10 @@ module.exports = {
       template: './src/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      'React': 'react',
+      'ReactDOM': 'react-dom',
+    })
   ],
   output: {
     path: path.resolve(__dirname, '../', 'dist'),
