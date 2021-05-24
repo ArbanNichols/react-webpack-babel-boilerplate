@@ -3,6 +3,7 @@ const webpack = require('webpack');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const svgToMiniDataURI = require('mini-svg-data-uri');
 
 module.exports = {
   entry: './src/index.jsx',
@@ -16,7 +17,18 @@ module.exports = {
       {
         test: /\.(css)$/,
         use: ['style-loader', 'css-loader'],
-      }
+      },
+      {
+        test: /\.(svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              generator: (content) => svgToMiniDataURI(content.toString()),
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
@@ -30,11 +42,11 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
-      'React': 'react',
-      'ReactDOM': 'react-dom',
-      'useState': ['react', 'useState'],
-      'useEffect': ['react', 'useEffect'],
-    })
+      React: 'react',
+      ReactDOM: 'react-dom',
+      useState: ['react', 'useState'],
+      useEffect: ['react', 'useEffect'],
+    }),
   ],
   output: {
     path: path.resolve(__dirname, '../', 'dist'),
