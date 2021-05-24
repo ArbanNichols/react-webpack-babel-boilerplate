@@ -46,6 +46,7 @@ module.exports = {
       ReactDOM: 'react-dom',
       useState: ['react', 'useState'],
       useEffect: ['react', 'useEffect'],
+      useContext: ['react', 'useContext'],
     }),
   ],
   output: {

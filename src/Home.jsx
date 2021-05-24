@@ -1,6 +1,9 @@
 import { FaBars } from 'react-icons/fa';
+import { useGlobalContext } from './context';
 
 const Home = () => {
+  const data = useGlobalContext();
+
   return <main>
     <button className="sidebar-toggle">
       <FaBars/>
