@@ -1,12 +1,11 @@
 import App from './App';
-
-const title = 'React with Webpack and Babel (Advanced)';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App title={title} />
+    <App />
   </React.StrictMode>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );
 
 module.hot.accept();
