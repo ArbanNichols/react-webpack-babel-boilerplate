@@ -3,6 +3,7 @@ const webpack = require('webpack');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const svgToMiniDataURI = require('mini-svg-data-uri');
 
 module.exports = {
   entry: './src/index.jsx',
@@ -12,6 +13,21 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
+      },
+      {
+        test: /\.(css)$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              generator: (content) => svgToMiniDataURI(content.toString()),
+            },
+          },
+        ],
       },
     ],
   },
