@@ -42,13 +42,13 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
-      'React': 'react',
-      'ReactDOM': 'react-dom',
-      'useState': ['react', 'useState'],
-      'useContext': ['react', 'useContext'],
-      'useEffect': ['react', 'useEffect'],
-      'useRef': ['react', 'useRef'],
-    })
+      React: 'react',
+      ReactDOM: 'react-dom',
+      useState: ['react', 'useState'],
+      useContext: ['react', 'useContext'],
+      useEffect: ['react', 'useEffect'],
+      useRef: ['react', 'useRef'],
+    }),
   ],
   output: {
     path: path.resolve(__dirname, '../', 'dist'),
