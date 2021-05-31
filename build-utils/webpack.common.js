@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const svgToMiniDataURI = require('mini-svg-data-uri');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: path.resolve(__dirname, '..', './src/index.jsx'),
   module: {
     rules: [
       {
@@ -38,7 +38,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Hello Webpack bundled JavaScript Project',
-      template: './src/index.html',
+      template: path.resolve(__dirname, '..', './src/index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
@@ -51,12 +51,8 @@ module.exports = {
     }),
   ],
   output: {
-    path: path.resolve(__dirname, '../', 'dist'),
+    path: path.resolve(__dirname, '..', 'dist'),
     publicPath: '/',
     filename: 'bundle.js',
-  },
-  devServer: {
-    contentBase: './dist',
-    hot: true,
   },
 };
