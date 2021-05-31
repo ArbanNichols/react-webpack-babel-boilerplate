@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: path.resolve(__dirname, '..', './src/index.jsx'),
   module: {
     rules: [
       {
@@ -22,21 +22,17 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Hello Webpack bundled JavaScript Project',
-      template: './src/index.html',
+      template: path.resolve(__dirname, '..', './src/index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
-      'React': 'react',
-      'ReactDOM': 'react-dom',
-    })
+      React: 'react',
+      ReactDOM: 'react-dom',
+    }),
   ],
   output: {
-    path: path.resolve(__dirname, '../', 'dist'),
+    path: path.resolve(__dirname, '..', 'dist'),
     publicPath: '/',
     filename: 'bundle.js',
-  },
-  devServer: {
-    contentBase: './dist',
-    hot: true,
   },
 };

@@ -1,3 +1,4 @@
+const path = require('path');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -8,4 +9,8 @@ module.exports = {
       path: './.env.development',
     }),
   ],
+  devServer: {
+    contentBase: path.resolve(__dirname, '..', 'dist'),
+    hot: true,
+  },
 };
