@@ -1,11 +1,12 @@
 import App from './App';
 import './index.css';
-
-const title = 'React with Webpack and Babel (Advanced)';
+import { AppProvider } from './context';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppProvider>
+      <App />
+    </AppProvider>
   </React.StrictMode>,
   document.getElementById('app')
 );

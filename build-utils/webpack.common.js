@@ -44,6 +44,10 @@ module.exports = {
     new webpack.ProvidePlugin({
       'React': 'react',
       'ReactDOM': 'react-dom',
+      'useState': ['react', 'useState'],
+      'useContext': ['react', 'useContext'],
+      'useEffect': ['react', 'useEffect'],
+      'useRef': ['react', 'useRef'],
     })
   ],
   output: {
