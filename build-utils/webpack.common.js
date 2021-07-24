@@ -13,6 +13,10 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+      {
+        test: /\.(css)$/,
+        use: ['style-loader', 'css-loader'],
+      }
     ],
   },
   resolve: {
@@ -21,13 +25,14 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Hello Webpack bundled JavaScript Project',
+      title: 'Forms Practice',
       template: path.resolve(__dirname, '..', './src/index.html'),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       React: 'react',
       ReactDOM: 'react-dom',
+      useState: ['react', 'useState'],
     }),
   ],
   output: {
