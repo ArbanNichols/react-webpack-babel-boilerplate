@@ -1,12 +1,15 @@
+import axios from 'axios';
 import { useEffect } from 'react';
 import Loading from './Loading';
 import Tours from './Tours';
+import { states } from './data';
 
 const url = 'https://course-api.com/react-tours-project';
 
 const App = ({ title }) => {
   const [loading, setLoading] = useState(false);
   const [tours, setTours] = useState([]);
+  const [usa, setUsa] = useState([]);
 
   const removeTour = (id) => {
     const newTours = tours.filter((tour) => tour.id !== id);
@@ -26,6 +29,42 @@ const App = ({ title }) => {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    const newStates = [...states];
+    console.log(newStates);
+    newStates.forEach(({ name }, index) => {
+      axios({
+        method: 'post',
+        url: 'https://countriesnow.space/api/v0.1/countries/state/cities',
+        data: {
+          "country": "United States",
+          "state": name,
+        }
+      })
+        .then(response => {
+          const { data } = response.data;
+          const cities = [...data]
+          newStates[index].cities = cities;
+          // console.log(newStates[index]);
+        });
+    })
+    console.log(newStates);
+    // for (const name in newStates) {
+    //   axios({
+    //     method: 'post',
+    //     url: 'https://countriesnow.space/api/v0.1/countries/state/cities',
+    //     data: {
+    //       "country": "United States",
+    //       "state": name,
+    //     }
+    //   })
+    //     .then(response => {
+    //       // const { response } = response.data.data;
+    //       console.log(response);
+    //     });
+    // }
+  }, []);
 
   useEffect(() => {
     fetchTours();
